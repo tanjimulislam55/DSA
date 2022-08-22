@@ -46,10 +46,10 @@ class Tree:
         if root is None:
             return
         if root.left:
-            self.inorder_traversal(root.left)
+            self.inorder_traversal_using_recursion(root.left)
         print(root.data)
         if root.right:
-            self.inorder_traversal(root.right)
+            self.inorder_traversal_using_recursion(root.right)
         return
 
     def update(self, data: int) -> None:
@@ -66,4 +66,4 @@ t1.insert(3)
 t1.insert(50)
 t1.insert(99)
 t1.insert(101)
-print(t1.inorder_traversal(t1.root))
+print(t1.inorder_traversal_using_recursion(t1.root))
