@@ -2,7 +2,7 @@ from typing import List
 
 
 class TreeNode:
-    def __init__(self, data) -> None:
+    def __init__(self, data: int) -> None:
         self.data = data
         self.left = None
         self.right = None
@@ -16,7 +16,7 @@ class Tree:
         temp: TreeNode = self.root
 
         while True:
-            if temp.data > data:
+            if data < temp.data:
                 if temp.left:
                     temp = temp.left
                 else:
@@ -29,7 +29,7 @@ class Tree:
                     temp.right = TreeNode(data)
                     break
 
-    def insert_using_stack(self, data):
+    def insert_using_stack(self, data: int):
         stack = List[self.root]
 
         while stack:
@@ -42,7 +42,7 @@ class Tree:
     def search(self, data: int) -> None:
         pass
 
-    def inorder_traversal_using_recursion(self, root: TreeNode):
+    def inorder_traversal_using_recursion(self, root: TreeNode) -> None:
         if root is None:
             return
         if root.left:
@@ -51,6 +51,16 @@ class Tree:
         if root.right:
             self.inorder_traversal_using_recursion(root.right)
         return
+
+    def inorder_traversal_using_stack(self, root: TreeNode) -> None:
+        stack, temp = [], root
+        while stack or temp:
+            while temp:
+                stack.append(temp)
+                temp = temp.left
+            k: TreeNode = stack.pop()
+            print(k.data)
+            temp: TreeNode = k.right
 
     def update(self, data: int) -> None:
         pass
@@ -66,4 +76,5 @@ t1.insert(3)
 t1.insert(50)
 t1.insert(99)
 t1.insert(101)
-print(t1.inorder_traversal_using_recursion(t1.root))
+# print(t1.inorder_traversal_using_recursion(t1.root))
+print(t1.inorder_traversal_using_stack(t1.root))
