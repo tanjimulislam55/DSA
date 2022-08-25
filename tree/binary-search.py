@@ -62,6 +62,16 @@ class Tree:
             self.preorder_traversal_using_recursion(root.right)
         return
 
+    def postorder_traversal_using_recursion(self, root: TreeNode) -> None:
+        if root is None:
+            return
+        if root.left:
+            self.postorder_traversal_using_recursion(root.left)
+        if root.right:
+            self.postorder_traversal_using_recursion(root.right)
+        print(root.data)
+        return
+
     def inorder_traversal_using_stack(self, root: TreeNode) -> None:
         stack, temp = [], root
         while stack or temp:
@@ -88,4 +98,5 @@ t1.insert(99)
 t1.insert(101)
 # print(t1.inorder_traversal_using_recursion(t1.root))
 # print(t1.inorder_traversal_using_stack(t1.root))
-print(t1.preorder_traversal_using_recursion(t1.root))
+# print(t1.preorder_traversal_using_recursion(t1.root))
+print(t1.postorder_traversal_using_recursion(t1.root))
